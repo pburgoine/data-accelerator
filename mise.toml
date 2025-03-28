@@ -1,0 +1,18 @@
+[tools]
+uv = "0.6.10"
+java = "17"
+databricks-cli = "0.245.0"
+spark = "3.5.5"
+
+[settings]
+python.uv_venv_auto = true
+
+[tasks.spark-start]
+description = "Start a Spark Connect server"
+run = "$(mise where spark)/spark-3.5.5-bin-hadoop3/sbin/start-connect-server.sh --packages org.apache.spark:spark-connect_2.12:3.5.5"
+quiet = true
+
+[tasks.spark-stop]
+description = "Stop the Spark Connect server"
+run = "$(mise where spark)/spark-3.5.5-bin-hadoop3/sbin/stop-connect-server.sh"
+quiet = true
