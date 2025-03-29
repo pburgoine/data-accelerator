@@ -3,7 +3,6 @@ uv = "0.6.10"
 java = "17"
 databricks-cli = "0.245.0"
 spark = "3.5.5"
-node = "18.15.0"
 
 [settings]
 python.uv_venv_auto = true
