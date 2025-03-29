@@ -14,7 +14,16 @@ def use_connect(pytestconfig):
 
 @pytest.fixture
 def spark(use_connect) -> SparkSession:
-    spark_session = SparkSession.builder
     if use_connect:
-        spark_session = spark_session.remote("sc://localhost:15002")
-    return spark_session.appName("Pytest spark fixture").getOrCreate()
+        spark_session = (
+            SparkSession.builder.remote("sc://localhost:15002")  # type: ignore
+            .appName("Spark Connect Pytest Fixture")
+            .getOrCreate()
+        )
+    else:
+        spark_session = (
+            SparkSession.builder.master("local")  # type: ignore
+            .appName("Spark Connect Pytest Fixture")
+            .getOrCreate()
+        )
+    return spark_session
