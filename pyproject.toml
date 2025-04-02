@@ -20,11 +20,19 @@ dev = [
 ]
 
 [build-system]
-requires = ["setuptools >= 61.0"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling >= 1.27"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+only-include = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = "src"
 
 [tool.pyright]
-include = ["src"]
 venvPath = "."
 venv = ".venv"
+include = ["src", "tests"]
+exclude = ["**/node_modules", "**/__pycache__"]
 typeCheckingMode = "basic"
