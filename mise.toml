@@ -16,3 +16,13 @@ quiet = true
 description = "Stop the Spark Connect server"
 run = "$(mise where spark)/spark-3.5.5-bin-hadoop3/sbin/stop-connect-server.sh"
 quiet = true
+
+[tasks.run-tests]
+description = "Run all pytest tests"
+run = "uv run pytest"
+quiet = true
+
+[tasks.run-tests-connect]
+description = "Run all pytest tests using Spark Connect (make sure it is running first)"
+run = "uv run pytest --connect"
+quiet = true

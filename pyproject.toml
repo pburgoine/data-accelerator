@@ -29,6 +29,7 @@ only-include = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = "src"
+# addopts = "--connect" # turn on to use Spark Connect for pytest (including VSCode Testing)
 
 [tool.pyright]
 venvPath = "."
